@@ -5,7 +5,7 @@ using namespace std;
 int main()
 {
 
-//测试交换两个变量的值 Function Template
+//测试交换两个变量的值 Function Template MySwap
 #if 0 
 		//交换 int 变量的值
 		int i1 = 1, i2 = 2;
@@ -28,8 +28,8 @@ int main()
 		cout << b1 << ", " << b2 << endl;
 #endif // 0
 
-//测试求三个数的最大值 Function Template
-#if 1
+//测试求三个数的最大值 Function Template Max
+#if 0
 		//求三个整数的最大值
 		int im1 = 11, im2 = 22, im3 = 33, iMax = 0;
 		iMax = Max(im1, im2, im3);
@@ -46,6 +46,14 @@ int main()
 		lMax = Max(lm1, lm2, lm3);
 		cout << "lMax = " << lMax << endl;
 
+#endif // 1
+
+//测试类模板 Point
+#if 1
+		Point<int, int> p1(10, 20);
+		cout << "x = " << p1.getX() << ", y = " << p1.getY() << endl;
+
+		//Point<int, char*> p2(10, "东经180度");
 #endif // 1
 
 
