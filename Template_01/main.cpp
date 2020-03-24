@@ -49,12 +49,32 @@ int main()
 #endif // 1
 
 //测试类模板 Point
-#if 1
+#if 0
 		Point<int, int> p1(10, 20);
 		cout << "x = " << p1.getX() << ", y = " << p1.getY() << endl;
 
-		//Point<int, char*> p2(10, "东经180度");
+		Point<int, char*> p2(10, (char*)"东经180度");
+		cout << "x = " << p2.getX() << ", y = " << p2.getY() << endl;
+
+		Point<char*, char*>* p3 = new Point<char*, char*>((char*)"东经180度", (char*)"北纬210度");
+		cout << "x = " << p3->getX() << ", y = " << p3->getY() << endl;
+
+#endif
+
+//测试类模板CArray
+#if 1
+		CArray<int> a;
+		for (int i = 0; i < 5; i++)
+		{
+			a.push_back(i);
+		}
+		for (int i = 0; i < a.length(); i++)
+		{
+			cout << a[i] << " ";
+		}
+		cout << endl;
 #endif // 1
+
 
 
 	system("pause");
