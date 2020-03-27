@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OperatorOverloading_01", "O
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "time", "time\time.vcxproj", "{182FEB15-3017-42CE-B6B7-F9A4770BF688}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OperatorOverloading_02", "OperatorOverloading_02\OperatorOverloading_02.vcxproj", "{1FFA465B-62EE-4E08-A1C7-4EE521888247}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +43,14 @@ Global
 		{182FEB15-3017-42CE-B6B7-F9A4770BF688}.Release|x64.Build.0 = Release|x64
 		{182FEB15-3017-42CE-B6B7-F9A4770BF688}.Release|x86.ActiveCfg = Release|Win32
 		{182FEB15-3017-42CE-B6B7-F9A4770BF688}.Release|x86.Build.0 = Release|Win32
+		{1FFA465B-62EE-4E08-A1C7-4EE521888247}.Debug|x64.ActiveCfg = Debug|x64
+		{1FFA465B-62EE-4E08-A1C7-4EE521888247}.Debug|x64.Build.0 = Debug|x64
+		{1FFA465B-62EE-4E08-A1C7-4EE521888247}.Debug|x86.ActiveCfg = Debug|Win32
+		{1FFA465B-62EE-4E08-A1C7-4EE521888247}.Debug|x86.Build.0 = Debug|Win32
+		{1FFA465B-62EE-4E08-A1C7-4EE521888247}.Release|x64.ActiveCfg = Release|x64
+		{1FFA465B-62EE-4E08-A1C7-4EE521888247}.Release|x64.Build.0 = Release|x64
+		{1FFA465B-62EE-4E08-A1C7-4EE521888247}.Release|x86.ActiveCfg = Release|Win32
+		{1FFA465B-62EE-4E08-A1C7-4EE521888247}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

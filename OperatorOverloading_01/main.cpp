@@ -6,17 +6,17 @@ int main()
 {
 //≤‚ ‘Complex¿‡
 #if 1
-    Complex c1(25, 35);
-    Complex c2(10, 20);
-    Complex c3(1, 2);
-    Complex c4(4, 9);
-    Complex c5(34, 6);
-    Complex c6(80, 90);
+    MyComplex c1(25, 35);
+    MyComplex c2(10, 20);
+    MyComplex c3(1, 2);
+    MyComplex c4(4, 9);
+    MyComplex c5(34, 6);
+    MyComplex c6(80, 90);
 
-    Complex c7 = c1 + c2;
-    Complex c8 = c1 - c2;
-    Complex c9 = c1 * c2;
-    Complex c10 = c1 / c2;
+    MyComplex c7 = c1 + c2;
+    MyComplex c8 = c1 - c2;
+    MyComplex c9 = c1 * c2;
+    MyComplex c10 = c1 / c2;
     cout << "c7 = " << c7.real() << " + " << c7.imag() << "i" << endl;
     cout << "c8 = " << c8.real() << " + " << c8.imag() << "i" << endl;
     cout << "c9 = " << c9.real() << " + " << c9.imag() << "i" << endl;
@@ -28,8 +28,10 @@ int main()
     c6 /= c2;
     cout << "c3 = " << c3.real() << " + " << c3.imag() << "i" << endl;
     cout << "c4 = " << c4.real() << " + " << c4.imag() << "i" << endl;
-    cout << "c5 = " << c5.real() << " + " << c5.imag() << "i" << endl;
-    cout << "c6 = " << c6.real() << " + " << c6.imag() << "i" << endl;
+//    cout << "c5 = " << c5.real() << " + " << c5.imag() << "i" << endl;
+//    cout << "c6 = " << c6.real() << " + " << c6.imag() << "i" << endl;
+    cout << "c5 = " << c5 << endl;
+    cout << "c6 = " << c6 << endl;
 
     if (c1 == c2) {
         cout << "c1 == c2" << endl;
@@ -37,6 +39,12 @@ int main()
     if (c1 != c2) {
         cout << "c1 != c2" << endl;
     }
+
+    MyComplex c11, c12;
+    cin >> c11 >> c12;
+    cout << "c11 = " << c11 << endl;
+    cout << "c12 = " << c12 << endl;
+
 #endif
 
 	system("pause");

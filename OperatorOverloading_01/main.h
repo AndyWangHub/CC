@@ -12,31 +12,33 @@ using namespace std;
 5) 运算符重载函数既可以作为类的成员函数，也可以作为全局函数。
 6) 箭头运算符->、下标运算符[ ]、函数调用运算符( )、赋值运算符=只能以成员函数的形式重载。
 
-
 */
 
 //定义了一个复数类，通过运算符重载
 //四则运算符（+、-、*、/、+=、-=、*=、/=）和关系运算符（>、<、<=、>=、==、!=）
 //复数能够进行完整的四则运算，但不能进行完整的关系运算：我们只能判断两个复数是否相等，但不能比较它们的大小，所以不能对 >、<、<=、>= 进行重载
 //需要注意的是，我们以全局函数的形式重载了 +、-、*、/、==、!=，以成员函数的形式重载了 +=、-=、*=、/=，而且应该坚持这样做
-class Complex
+class MyComplex
 {
 public:
-	Complex(double real, double imag);
+	MyComplex(double real, double imag);
 public:
 	//以全局函数形式重载
-	friend Complex operator+(const Complex& c1, const Complex& c2);
-	friend Complex operator-(const Complex& c1, const Complex& c2);
-	friend Complex operator*(const Complex& c1, const Complex& c2);
-	friend Complex operator/(const Complex& c1, const Complex& c2);
-	friend bool operator==(const Complex& c1, const Complex& c2);
-	friend bool operator!=(const Complex& c1, const Complex& c2);
+	friend MyComplex operator+(const MyComplex& c1, const MyComplex& c2);
+	friend MyComplex operator-(const MyComplex& c1, const MyComplex& c2);
+	friend MyComplex operator*(const MyComplex& c1, const MyComplex& c2);
+	friend MyComplex operator/(const MyComplex& c1, const MyComplex& c2);
+	friend bool operator==(const MyComplex& c1, const MyComplex& c2);
+	friend bool operator!=(const MyComplex& c1, const MyComplex& c2);
+
+	friend istream& operator>>(istream& in, MyComplex& c);
+	friend ostream& operator<<(ostream& out, MyComplex& c);
 
 	//以成员函数的形式重载
-	Complex& operator+=(const Complex& c);
-	Complex& operator-=(const Complex& c);
-	Complex& operator*=(const Complex& c);
-	Complex& operator/=(const Complex& c);
+	MyComplex& operator+=(const MyComplex& c);
+	MyComplex& operator-=(const MyComplex& c);
+	MyComplex& operator*=(const MyComplex& c);
+	MyComplex& operator/=(const MyComplex& c);
 
 public: //成员函数
 	inline double real() const { return m_real; }
@@ -51,41 +53,41 @@ private:
 };
 
 
-Complex::Complex(double real = 0.0, double imag = 0.0) //用默认值实现无参构造函数
+MyComplex::MyComplex(double real = 0.0, double imag = 0.0) //用默认值实现无参构造函数
 	:m_real(real),m_imag(imag)
 {
 }
 
-Complex operator+(const Complex& c1, const Complex& c2)
+MyComplex operator+(const MyComplex& c1, const MyComplex& c2)
 {
-	return Complex(c1.m_real + c2.m_imag, c1.m_imag + c2.m_imag);
+	return MyComplex(c1.m_real + c2.m_imag, c1.m_imag + c2.m_imag);
 }
 
-inline Complex operator-(const Complex& c1, const Complex& c2)
+inline MyComplex operator-(const MyComplex& c1, const MyComplex& c2)
 {
-	Complex c;
+	MyComplex c;
 	c.m_real = c1.m_real - c2.m_real;
 	c.m_imag = c1.m_imag - c2.m_imag;
 	return c;
 }
 //重载*运算符  (a+bi) * (c+di) = (ac-bd) + (bc+ad)i
-inline Complex operator*(const Complex& c1, const Complex& c2)
+inline MyComplex operator*(const MyComplex& c1, const MyComplex& c2)
 {
-	Complex c;
+	MyComplex c;
 	c.m_real = c1.m_real * c2.m_real - c1.m_imag * c2.m_imag;
 	c.m_imag = c1.m_imag * c2.m_real + c1.m_real * c2.m_imag;
 	return c;
 }
 //重载/运算符  (a+bi) / (c+di) = [(ac+bd) / (c²+d²)] + [(bc-ad) / (c²+d²)]i
-inline Complex operator/(const Complex& c1, const Complex& c2)
+inline MyComplex operator/(const MyComplex& c1, const MyComplex& c2)
 {
-	Complex c;
+	MyComplex c;
 	c.m_real = (c1.m_real * c2.m_real + c1.m_imag * c2.m_imag) / (c2.m_real * c2.m_real + c2.m_imag * c2.m_imag);
 	c.m_imag = (c1.m_imag * c2.m_real - c1.m_real * c2.m_imag) / (pow(c2.m_real, 2) + pow(c2.m_imag, 2));
 	return c;
 }
 
-inline bool operator==(const Complex& c1, const Complex& c2)
+inline bool operator==(const MyComplex& c1, const MyComplex& c2)
 {
 	if (c1.m_real == c2.m_real && c1.m_imag == c2.m_imag)
 		return true;
@@ -93,7 +95,7 @@ inline bool operator==(const Complex& c1, const Complex& c2)
 		return false;
 }
 
-inline bool operator!=(const Complex& c1, const Complex& c2)
+inline bool operator!=(const MyComplex& c1, const MyComplex& c2)
 {
 	if (c1.m_real != c2.m_real || c1.m_imag != c2.m_imag)
 		return true;
@@ -101,21 +103,33 @@ inline bool operator!=(const Complex& c1, const Complex& c2)
 		return false;
 }
 
-inline Complex& Complex::operator+=(const Complex& c)
+inline istream& operator>>(istream& in, MyComplex& c)
+{
+	in >> c.m_real >> c.m_imag;
+	return in;
+}
+
+inline ostream& operator<<(ostream& out, MyComplex& c)
+{
+	out << c.m_real << " + " << c.m_imag << " i";
+	return out;
+}
+
+inline MyComplex& MyComplex::operator+=(const MyComplex& c)
 {
 	this->m_real += c.m_real;
 	this->m_imag += c.m_imag;
 	return *this;
 }
 
-inline Complex& Complex::operator-=(const Complex& c)
+inline MyComplex& MyComplex::operator-=(const MyComplex& c)
 {
 	this->m_real -= c.m_real;
 	this->m_imag -= c.m_imag;
 	return *this;
 }
 
-inline Complex& Complex::operator*=(const Complex& c)
+inline MyComplex& MyComplex::operator*=(const MyComplex& c)
 {
 	// TODO: 在此处插入 return 语句
 	this->m_real = ((*this) * c).m_real;
@@ -123,7 +137,7 @@ inline Complex& Complex::operator*=(const Complex& c)
 	return *this;
 }
 
-inline Complex& Complex::operator/=(const Complex& c)
+inline MyComplex& MyComplex::operator/=(const MyComplex& c)
 {
 	this->m_real = (this->m_real * c.m_real + this->m_imag * c.m_imag) / (pow(c.m_real, 2) + pow(c.m_imag, 2));
 	this->m_imag = (this->m_imag * c.m_real - this->m_real * c.m_imag) / (pow(c.m_real, 2) + pow(c.m_imag, 2));
