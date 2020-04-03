@@ -66,7 +66,7 @@ inline const int& MyArray::operator[](int i) const
 
 inline void MyArray::display() const
 {
-	for (size_t i = 0; i < m_length; i++)
+	for (int i = 0; i < m_length; i++)
 	{
 		if (i == m_length - 1)
 			cout << m_p[i] << endl;

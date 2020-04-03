@@ -98,7 +98,7 @@ class CArray
 {
 public:
 	CArray(int s = 0); //s代表数组元素的个数
-	CArray(CArray &a);
+	CArray(CArray& a);
 	~CArray();
 
 	void push_back(const T& v); //用于在数组尾部添加一个元素v
@@ -106,6 +106,10 @@ public:
 	T length() { return size; }
 	T& operator[](int i)
 	{//用于支持根据下标访问数组元素，如a[i] = 4和n = a[i]这样的语句
+		return ptr[i];
+	}
+	const T& operator[](int i)const
+	{
 		return ptr[i];
 	}
 
